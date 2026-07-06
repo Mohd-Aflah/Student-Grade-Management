@@ -1,84 +1,70 @@
 # Student Grade Management System
 
-A simple full-stack web application for managing student grades.
-
-## Tech Stack
-
-- **Frontend:** React (Vite) + Bootstrap - hosted on Cloudflare Pages
-- **Backend:** Node.js + Express - hosted on Render
-- **Database:** MySQL - hosted on Aiven
-
-## Database Setup
-
-Run `database/setup.sql` on your Aiven MySQL instance to create the tables and view.
-
-## Backend Setup
-
-```bash
-cd backend
-npm install
-```
-
-Create a `.env` file (see `.env.example`):
-
-```
-DB_HOST=your-aiven-host.aivencloud.com
-DB_PORT=12345
-DB_USER=avnadmin
-DB_PASSWORD=your-password
-DB_NAME=student_grades_db
-DB_SSL=true
-PORT=5000
-```
-
-Run locally:
-
-```bash
-npm run dev
-```
-
-### Deploy to Render
-
-1. Create a new Web Service on Render
-2. Set root directory to `backend`
-3. Build command: `npm install`
-4. Start command: `node server.js`
-5. Add the environment variables from `.env.example`
-
-## Frontend Setup
-
-```bash
-cd frontend
-npm install
-```
-
-Create a `.env` file:
-
-```
-VITE_API_URL=http://localhost:5000
-```
-
-Run locally:
-
-```bash
-npm run dev
-```
-
-### Deploy to Cloudflare Pages
-
-1. Connect your repo to Cloudflare Pages
-2. Set build command: `npm run build`
-3. Set build output directory: `dist`
-4. Set root directory: `frontend`
-5. Add environment variable: `VITE_API_URL=https://your-render-app.onrender.com`
+A full-stack web application for managing student grades.
 
 ## Features
+- **Subjects:** Add, edit, and delete subjects.
+- **Students:** Add, edit, and delete students with subject and grade.
+- **Auto-Calculations:** Remarks are auto-calculated (grade >= 75 = PASS, otherwise FAIL) and are read-only.
+- **Student Grades:** View all grades with search and PASS/FAIL filters.
 
-- **Subjects** - Add, edit, and delete subjects
-- **Students** - Add, edit, and delete students with subject and grade
-- **Student Grades** - View all grades with search and PASS/FAIL filter
+## Technologies Used
+- **Frontend:** React (Vite), Bootstrap
+- **Backend:** Node.js, Express
+- **Database:** MySQL
 
-## Business Rules
+---
 
-- Remarks are auto-calculated: grade >= 75 = PASS, otherwise FAIL
-- Remarks field is readonly and cannot be edited by the user
+## 🚀 Getting Started Locally
+
+### 1. Database Setup
+1. Create a MySQL database instance (e.g., using Aiven).
+2. Execute the `database/setup.sql` script on your database to create the required tables and views.
+
+### 2. Backend Setup
+1. Navigate to the `backend` directory:
+   ```bash
+   cd backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file based on the provided `.env.example` and fill in your database credentials.
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+### 3. Frontend Setup
+1. Navigate to the `frontend` directory:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file based on the provided `.env.example` and set `VITE_API_URL` to your backend URL (e.g., `http://localhost:5000`).
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🌐 Deployment Guides
+
+### Deploy Backend (e.g., Render)
+1. Create a new Web Service.
+2. Set root directory to `backend`.
+3. Set build command: `npm install`.
+4. Set start command: `node server.js`.
+5. Add all required environment variables from your `.env` file.
+
+### Deploy Frontend (e.g., Cloudflare Pages)
+1. Connect your repository to your hosting provider.
+2. Set root directory to `frontend`.
+3. Set build command: `npm run build`.
+4. Set build output directory: `dist`.
+5. Add the `VITE_API_URL` environment variable pointing to your deployed backend URL.
